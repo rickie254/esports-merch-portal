@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+* {
+    box-sizing: border-box;
+}
+
+.loginRegister {
+    background: url('/images/pubg-game.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: darken;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+    height: 100vh;
+    margin: -20px 0 50px;
+}
