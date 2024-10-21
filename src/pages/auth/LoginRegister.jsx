@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
 import * as Components from "../../library/FormComponents";
 import "../themes/Register.css";
 import { loginFields, registerFields } from '../../library/utils/formFields';

@@ -53,6 +53,7 @@ export const Title = styled.h1`
   margin: 0;
   text-align: center;
   font-size: 20px;
+  color: hsla(0, 100%, 45%, 0.89);
 `;
 
 export const Input = styled.input`
@@ -91,7 +92,7 @@ export const Button = styled.button`
 
 export const GhostButton = styled(Button)`
   background-color: transparent;
-//   border-color: red;
+  //   border-color: red;
   &:hover {
     background-color: hsla(0, 100%, 45%, 0.89);
   }
@@ -119,10 +120,10 @@ export const OverlayContainer = styled.div`
 `;
 
 export const Overlay = styled.div`
-  background: hsl(0, 0%, 16%);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
+  background: ${(props) =>
+    props.signingIn
+      ? `url(images/latest-game-1.jpg)`
+      : `url(images/ghost.jpg)`} !important;
   color: #ffffff;
   position: relative;
   left: -100%;
@@ -130,9 +131,23 @@ export const Overlay = styled.div`
   width: 200%;
   transform: translateX(0);
   transition: transform 0.6s ease-in-out;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    z-index: -1;
+  }
+
   ${(props) =>
     props.signingIn !== true ? `transform: translateX(50%);` : null}
 `;
+
 
 export const OverlayPanel = styled.div`
   position: absolute;
@@ -162,8 +177,9 @@ export const RightOverlayPanel = styled(OverlayPanel)`
 `;
 export const Paragraph = styled.p`
   font-size: 14px;
-  font-weight: 100;
+  font-weight: 700;
   line-height: 20px;
   letter-spacing: 0.5px;
   margin: 20px 0 30px;
+  color: hsla(0, 100%, 45%, 0.89);
 `;
