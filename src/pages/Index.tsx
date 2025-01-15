@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ProductCard } from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const categories = ["All", "Cooling", "Gaming", "Audio", "Storage", "Accessories"];
 
@@ -153,10 +154,16 @@ const products = [
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredProducts = selectedCategory === "All"
-    ? products
-    : products.filter(product => product.category === selectedCategory);
+  const filteredProducts = products
+    .filter(product => {
+      const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
+      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          product.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          product.category.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -194,18 +201,31 @@ const Index = () => {
         </header>
 
         <main className="container py-8">
-          {/* Categories */}
-          <div className="flex flex-wrap gap-2 justify-center mb-8">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                variant={selectedCategory === category ? "default" : "outline"}
-                className={selectedCategory === category ? "bg-primary" : ""}
-              >
-                {category}
-              </Button>
-            ))}
+          {/* Search and Categories */}
+          <div className="space-y-6 mb-8">
+            <div className="max-w-md mx-auto">
+              <Input
+                type="search"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full"
+              />
+            </div>
+            
+            {/* Categories */}
+            <div className="flex flex-wrap gap-2 justify-center">
+              {categories.map((category) => (
+                <Button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  variant={selectedCategory === category ? "default" : "outline"}
+                  className={selectedCategory === category ? "bg-primary" : ""}
+                >
+                  {category}
+                </Button>
+              ))}
+            </div>
           </div>
 
           {/* Products Grid */}
@@ -217,9 +237,19 @@ const Index = () => {
                 price={product.price}
                 image={product.image}
                 category={product.category}
+                description={product.description}
               />
             ))}
           </div>
+
+          {/* No Results Message */}
+          {filteredProducts.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-lg text-muted-foreground">
+                No products found matching your search criteria.
+              </p>
+            </div>
+          )}
         </main>
       </div>
     </div>
