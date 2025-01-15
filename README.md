@@ -1,4 +1,4 @@
-# Welcome to your kuer project
+# Welcome kuer 
 
 ## Project info
 
