@@ -11,6 +11,7 @@ const products = [
     price: 25000,
     category: "Chairs",
     image: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=800&auto=format&fit=crop&q=60",
+    description: "Professional gaming chair with ergonomic design, adjustable armrests, and lumbar support. Perfect for long gaming sessions.",
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const products = [
     price: 3500,
     category: "Cooling Fans",
     image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=800&auto=format&fit=crop&q=60",
+    description: "High-performance RGB cooling fan with PWM control and silent operation. Keeps your gaming rig cool under pressure.",
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const products = [
     price: 2000,
     category: "Gloves",
     image: "https://images.unsplash.com/photo-1551578657-a7e74acb0135?w=800&auto=format&fit=crop&q=60",
+    description: "Anti-slip gaming gloves with breathable material. Enhances grip and prevents sweaty hands during intense gaming.",
   },
   {
     id: 4,
@@ -32,6 +35,7 @@ const products = [
     price: 1500,
     category: "Accessories",
     image: "https://images.unsplash.com/photo-1625061770820-5f7a53a6cf26?w=800&auto=format&fit=crop&q=60",
+    description: "Extended RGB mousepad with smooth surface and non-slip base. Perfect for precise mouse movements.",
   },
 ];
 
@@ -46,10 +50,9 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
       <div 
-        className="relative h-[60vh] flex items-center justify-center bg-cover bg-center"
+        className="relative h-screen flex items-center justify-center bg-cover bg-center bg-fixed"
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&auto=format&fit=crop&q=60')",
-          backgroundBlendMode: "overlay",
         }}
       >
         {/* Dark overlay */}
@@ -73,7 +76,7 @@ const Index = () => {
       </div>
 
       {/* Shop Section */}
-      <div id="shop-section">
+      <div id="shop-section" className="scroll-mt-16">
         <header className="py-6 px-4 border-b border-secondary">
           <h2 className="text-3xl font-bold text-center">Our Products</h2>
         </header>
