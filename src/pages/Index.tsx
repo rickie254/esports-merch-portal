@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ProductCard } from "@/components/ProductCard";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import Hero from "@/components/Hero";
+import SearchAndFilter from "@/components/SearchAndFilter";
+import ProductGrid from "@/components/ProductGrid";
 import { CPPricing } from "@/components/CPPricing";
 
 const categories = ["All", "Cooling", "Gaming", "Audio", "Storage", "Accessories"];
@@ -151,7 +151,6 @@ const products = [
     image: "https://i.ytimg.com/vi/GcGJ4fe0iNk/maxresdefault.jpg",
     description: "Team up with 5v5 Rush, a new way to play with friends in Football Ultimate Team, Clubs, and Kick-Off with small-sided gameplay.",
   },
-
   {
     id: 19,
     name: "PS5 DualSense Wireless Controller",
@@ -168,7 +167,6 @@ const products = [
     image: "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/44/1638262/1.jpg?2929",
     description: "This micro USB cable is specifically made for with controller,Extra meter cable (10FT) allows you to play comfortably,Simultaneously charge and play with the 4 () controller,Features: Charging Cable, High Quality, Good Replacement",
   },
-
   {
     id: 42,
     name: "Kasorix Gaming Chair ",
@@ -201,111 +199,42 @@ const products = [
     image: "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/05/2087382/1.jpg?5393",
     description: "Key Features Ergonomics: Keys:6 keys Led: led breathing light Size:134x84x40mm DPI:800/1200/1600/2400 Easy to use",
   },
- 
 ];
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredProducts = products
-    .filter(product => {
-      const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
-      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          product.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          product.category.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesSearch;
-    });
+  const filteredProducts = products.filter(product => {
+    const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
+    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        product.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        product.category.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Hero Section */}
-      <div 
-        className="relative h-screen flex items-center justify-center bg-cover bg-center bg-fixed"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&auto=format&fit=crop&q=60')",
-        }}
-      >
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/70"></div>
-        
-        {/* Content */}
-        <div className="relative z-10 text-center space-y-6 max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold text-white animate-fade-in">
-            Welcome to Kenya Universities Esports Shop
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-200 animate-fade-in">
-            Level up your game with professional gaming gear
-          </p>
-          <Button 
-            className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in"
-            onClick={() => document.getElementById('shop-section')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Shop Now
-          </Button>
-        </div>
-      </div>
+      <Hero />
 
-      {/* Shop Section */}
       <div id="shop-section" className="scroll-mt-16">
         <header className="py-6 px-4 border-b border-secondary">
           <h2 className="text-3xl font-bold text-center">Our Products</h2>
         </header>
 
         <main className="container py-8">
-          {/* Search and Categories */}
-          <div className="space-y-6 mb-8">
-            <div className="max-w-md mx-auto">
-              <Input
-                type="search"
-                placeholder="Search products..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full"
-              />
-            </div>
-            
-            {/* Categories */}
-            <div className="flex flex-wrap gap-2 justify-center">
-              {categories.map((category) => (
-                <Button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  className={selectedCategory === category ? "bg-primary" : ""}
-                >
-                  {category}
-                </Button>
-              ))}
-            </div>
-          </div>
-
-          {/* Products Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                name={product.name}
-                price={product.price}
-                image={product.image}
-                category={product.category}
-                description={product.description}
-              />
-            ))}
-          </div>
-
-          {/* No Results Message */}
-          {filteredProducts.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-lg text-muted-foreground">
-                No products found matching your search criteria.
-              </p>
-            </div>
-          )}
+          <SearchAndFilter
+            categories={categories}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
+          
+          <ProductGrid products={filteredProducts} />
         </main>
       </div>
 
-      {/* CP Points Section */}
       <CPPricing />
     </div>
   );

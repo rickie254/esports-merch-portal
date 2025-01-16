@@ -47,7 +47,14 @@ export function CPPricing() {
   return (
     <section className="py-16 bg-secondary/10" id="cp-section">
       <div className="container">
-        <h2 className="text-3xl font-bold text-center mb-8">Buy CP Points</h2>
+        <div className="flex flex-col items-center mb-8">
+          <img 
+            src="https://static.wixstatic.com/media/9d1eb1_211e791fc9b64e83905a6018df7d7a7b~mv2.png/v1/fill/w_480,h_481,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9d1eb1_211e791fc9b64e83905a6018df7d7a7b~mv2.png"
+            alt="CP Points"
+            className="w-32 h-32 mb-4"
+          />
+          <h2 className="text-3xl font-bold text-center">Buy CP Points</h2>
+        </div>
         
         <div className="max-w-md mx-auto mb-8">
           <Select
