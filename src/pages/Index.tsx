@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ProductCard } from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { CPPricing } from "@/components/CPPricing";
 
 const categories = ["All", "Cooling", "Gaming", "Audio", "Storage", "Accessories"];
 
@@ -303,6 +304,9 @@ const Index = () => {
           )}
         </main>
       </div>
+
+      {/* CP Points Section */}
+      <CPPricing />
     </div>
   );
 };
