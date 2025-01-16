@@ -45,32 +45,33 @@ export function CPPricing() {
   };
 
   return (
-    <section 
-      className="py-16 bg-secondary/10"
-      id="cp-section"
-    >
+    <section className="py-16 bg-secondary/10" id="cp-section">
       <div className="container">
         <div className="flex flex-col items-center mb-8">
-          <img 
+          <img
             src="https://static.wixstatic.com/media/9d1eb1_211e791fc9b64e83905a6018df7d7a7b~mv2.png/v1/fill/w_480,h_481,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9d1eb1_211e791fc9b64e83905a6018df7d7a7b~mv2.png"
             alt="CP Points"
             className="w-32 h-32 mb-4"
           />
           <h2 className="text-3xl font-bold text-center">Buy CP Points</h2>
         </div>
-        
+
         <div className="max-w-md mx-auto mb-8">
-          <Select
-            value={selectedCountry}
-            onValueChange={setSelectedCountry}
-          >
+          <Select value={selectedCountry} onValueChange={setSelectedCountry}>
             <SelectTrigger>
               <SelectValue placeholder="Select your country" />
             </SelectTrigger>
             <SelectContent>
               {Object.keys(cpPricing).map((country) => (
                 <SelectItem key={country} value={country}>
-                  {country} {country === "Kenya" ? "🇰🇪" : country === "Nigeria" ? "🇳🇬" : country === "Uganda" ? "🇺🇬" : "🇹🇿"}
+                  {country}{" "}
+                  {country === "Kenya"
+                    ? "🇰🇪"
+                    : country === "Nigeria"
+                    ? "🇳🇬"
+                    : country === "Uganda"
+                    ? "🇺🇬"
+                    : "🇹🇿"}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -84,7 +85,12 @@ export function CPPricing() {
               className="bg-secondary p-6 rounded-lg text-center hover:scale-105 transition-transform duration-300"
             >
               <div className="flex flex-col h-full justify-between">
-                <div>
+                <div className="mb-4">
+                  <img
+                    src="https://static.wixstatic.com/media/9d1eb1_211e791fc9b64e83905a6018df7d7a7b~mv2.png/v1/fill/w_480,h_481,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9d1eb1_211e791fc9b64e83905a6018df7d7a7b~mv2.png"
+                    alt="CP Points"
+                    className="w-20 h-20 mx-auto mb-4"
+                  />
                   <h3 className="text-2xl font-bold text-primary mb-2">
                     {tier.points.toLocaleString()} CP
                   </h3>
@@ -92,6 +98,7 @@ export function CPPricing() {
                     {tier.price.toLocaleString()} {tier.currency}
                   </p>
                 </div>
+
                 <Button
                   onClick={() => handlePurchase(tier.points, tier.price, tier.currency)}
                   className="w-full bg-primary hover:bg-primary/90 animate-pulse-red"
