@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import SearchAndFilter from "@/components/SearchAndFilter";
 import ProductGrid from "@/components/ProductGrid";
 import { CPPricing } from "@/components/CPPricing";
+import { NavigationButtons } from "@/components/NavigationButtons";
 
 const categories = ["All", "Cooling", "Gaming", "Audio", "Storage", "Accessories"];
 
@@ -216,6 +217,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Hero />
+      <NavigationButtons />
 
       <div id="shop-section" className="scroll-mt-16">
         <header className="py-6 px-4 border-b border-secondary">

@@ -46,12 +46,7 @@ export function CPPricing() {
 
   return (
     <section 
-      className="py-16 bg-cover bg-center bg-fixed" 
-      style={{
-        backgroundImage: `url('https://static.wixstatic.com/media/9d1eb1_211e791fc9b64e83905a6018df7d7a7b~mv2.png/v1/fill/w_480,h_481,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9d1eb1_211e791fc9b64e83905a6018df7d7a7b~mv2.png')`,
-        backgroundColor: 'rgba(0, 0, 0, 0.85)',
-        backgroundBlendMode: 'overlay'
-      }}
+      className="py-16 bg-secondary/10"
       id="cp-section"
     >
       <div className="container">
@@ -61,7 +56,7 @@ export function CPPricing() {
             alt="CP Points"
             className="w-32 h-32 mb-4"
           />
-          <h2 className="text-3xl font-bold text-center text-white">Buy CP Points</h2>
+          <h2 className="text-3xl font-bold text-center">Buy CP Points</h2>
         </div>
         
         <div className="max-w-md mx-auto mb-8">
@@ -69,7 +64,7 @@ export function CPPricing() {
             value={selectedCountry}
             onValueChange={setSelectedCountry}
           >
-            <SelectTrigger className="bg-secondary text-white">
+            <SelectTrigger>
               <SelectValue placeholder="Select your country" />
             </SelectTrigger>
             <SelectContent>
@@ -86,14 +81,14 @@ export function CPPricing() {
           {cpPricing[selectedCountry as keyof typeof cpPricing].map((tier) => (
             <div
               key={tier.points}
-              className="bg-secondary/80 backdrop-blur-sm p-6 rounded-lg text-center hover:scale-105 transition-transform duration-300 border border-primary/20"
+              className="bg-secondary p-6 rounded-lg text-center hover:scale-105 transition-transform duration-300"
             >
               <div className="flex flex-col h-full justify-between">
                 <div>
                   <h3 className="text-2xl font-bold text-primary mb-2">
                     {tier.points.toLocaleString()} CP
                   </h3>
-                  <p className="text-xl font-semibold mb-4 text-white">
+                  <p className="text-xl font-semibold mb-4">
                     {tier.price.toLocaleString()} {tier.currency}
                   </p>
                 </div>
