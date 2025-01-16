@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 const Hero = () => (
   <div 
     className="relative h-screen flex items-center justify-center bg-cover bg-center bg-fixed"
