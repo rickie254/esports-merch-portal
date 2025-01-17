@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import {
   Select,
   SelectContent,
@@ -7,7 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { toast } from "@/components/ui/use-toast";
 
 const cpPricing = {
   Kenya: [
@@ -36,11 +36,13 @@ const cpPricing = {
 
 export function CPPricing() {
   const [selectedCountry, setSelectedCountry] = useState("Kenya");
+  const navigate = useNavigate();
 
   const handlePurchase = (points: number, price: number, currency: string) => {
-    toast({
-      title: "Purchase Request Sent",
-      description: `Your request to purchase ${points} CP for ${price} ${currency} has been received. Please check your DMs for further instructions.`,
+    navigate("/cp-purchase", { 
+      state: { 
+        cpDetails: { points, price, currency } 
+      } 
     });
   };
 
@@ -54,6 +56,12 @@ export function CPPricing() {
             className="w-32 h-32 mb-4"
           />
           <h2 className="text-3xl font-bold text-center">Buy CP Points</h2>
+          <div className="text-center mt-4 space-y-2 text-sm text-muted-foreground">
+            <p>SELECT THE PACK YOU WANT</p>
+            <p>ADD TO CART &gt; VIEW CART</p>
+            <p>PLACE ORDER &gt; MAKE PAYMENT</p>
+            <p>SEND DETAILS GET YOUR CP & UPDATE YOUR DETAILS SIMPLE</p>
+          </div>
         </div>
 
         <div className="max-w-md mx-auto mb-8">
@@ -64,14 +72,7 @@ export function CPPricing() {
             <SelectContent>
               {Object.keys(cpPricing).map((country) => (
                 <SelectItem key={country} value={country}>
-                  {country}{" "}
-                  {country === "Kenya"
-                    ? "🇰🇪"
-                    : country === "Nigeria"
-                    ? "🇳🇬"
-                    : country === "Uganda"
-                    ? "🇺🇬"
-                    : "🇹🇿"}
+                  {country} {country === "Kenya" ? "🇰🇪" : country === "Nigeria" ? "🇳🇬" : country === "Uganda" ? "🇺🇬" : "🇹🇿"}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -101,7 +102,7 @@ export function CPPricing() {
 
                 <Button
                   onClick={() => handlePurchase(tier.points, tier.price, tier.currency)}
-                  className="w-full bg-primary hover:bg-primary/90 animate-pulse-red"
+                  className="w-full bg-primary hover:bg-primary/90"
                 >
                   Purchase
                 </Button>
