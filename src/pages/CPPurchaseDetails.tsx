@@ -2,20 +2,23 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function CPPurchaseDetails() {
   const location = useLocation();
   const navigate = useNavigate();
-  const cpDetails = location.state?.cpDetails;
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  if (!cpDetails) {
-    navigate("/");
-    return null;
-  }
+  // Handle navigation in useEffect
+  useEffect(() => {
+    if (!location.state?.cpDetails) {
+      navigate("/");
+    }
+  }, [location.state, navigate]);
+
+  const cpDetails = location.state?.cpDetails;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,6 +37,11 @@ export default function CPPurchaseDetails() {
       });
     }
   };
+
+  // If no cpDetails, return null (navigation will happen in useEffect)
+  if (!cpDetails) {
+    return null;
+  }
 
   return (
     <div 
