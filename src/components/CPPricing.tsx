@@ -58,9 +58,10 @@ export function CPPricing() {
           <h2 className="text-3xl font-bold text-center">Buy CP Points</h2>
           <div className="text-center mt-4 space-y-2 text-sm text-muted-foreground">
             <p>SELECT THE PACK YOU WANT</p>
-            <p>ADD TO CART &gt; VIEW CART</p>
-            <p>PLACE ORDER &gt; MAKE PAYMENT</p>
-            <p>SEND DETAILS GET YOUR CP & UPDATE YOUR DETAILS SIMPLE</p>
+            <p>PROVIDE DETAILS &gt; SUBMIT ORDER </p>
+            <p>FILL OUT PAYMENT OPTION  &gt; MAKE PAYMENT</p>
+            <p>WITH IN 24HOURS & CP WILL UPDATE TO THE RESPECTIVE ACCOUNT</p>
+            <p>ITS THAT SIMPLE</p>
           </div>
         </div>
 
