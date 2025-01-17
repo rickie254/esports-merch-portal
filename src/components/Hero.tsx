@@ -40,7 +40,7 @@ const Hero = () => {
             onClick={() => scrollToSection("cp-section")}
             className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded"
           >
-            Buy CP for Call of Duty
+            Buy Codm Points from 254•CP-SHOP
           </button>
           <button
             onClick={() => scrollToSection("uc-section")}

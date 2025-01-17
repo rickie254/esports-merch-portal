@@ -51,7 +51,7 @@ export function CPPricing() {
       <div className="container">
         <div className="flex flex-col items-center mb-8">
           <img
-            src="https://static.wixstatic.com/media/9d1eb1_211e791fc9b64e83905a6018df7d7a7b~mv2.png/v1/fill/w_480,h_481,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9d1eb1_211e791fc9b64e83905a6018df7d7a7b~mv2.png"
+            src="https://res.cloudinary.com/djeyyn3yi/image/upload/v1737109851/WhatsApp_Image_2025-01-17_at_11.54.30_0981e75f_odxs91.jpg"
             alt="CP Points"
             className="w-32 h-32 mb-4"
           />
