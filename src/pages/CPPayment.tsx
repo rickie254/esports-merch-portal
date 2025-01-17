@@ -3,18 +3,26 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MessageCircle } from "lucide-react";
 
 export default function CPPayment() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { cpDetails, userDetails } = location.state || {};
   const [phoneNumber, setPhoneNumber] = useState("");
   const [message, setMessage] = useState("");
 
+  // Handle navigation in useEffect
+  useEffect(() => {
+    if (!location.state?.cpDetails || !location.state?.userDetails) {
+      navigate("/");
+    }
+  }, [location.state, navigate]);
+
+  const { cpDetails, userDetails } = location.state || {};
+
+  // If no details, return null (navigation will happen in useEffect)
   if (!cpDetails || !userDetails) {
-    navigate("/");
     return null;
   }
 
