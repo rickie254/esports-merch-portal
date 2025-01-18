@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CPPricing } from "@/components/CPPricing";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useNavigate } from "react-router-dom";
 
 export default function CPShop() {
   const [showPricing, setShowPricing] = useState(false);
+  const navigate = useNavigate();
 
   const drawCosts = [
     {
@@ -35,18 +37,26 @@ export default function CPShop() {
   ];
 
   return (
-    <div className="min-h-screen bg-black">
-      {/* Hero Section */}
-      <div 
-        className="relative min-h-[60vh] flex items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-            url('https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/mobile/home/features/codm-hero-desktop.jpg')`
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50"></div>
-        
-        <div className="relative z-10 text-center px-4">
+    <div 
+      className="min-h-screen bg-black"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://blog.activision.com/content/dam/atvi/activision/atvi-touchui/blog/callofduty/feature/codm/COD-LAUNCH-TOUT.jpg)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      <div className="container mx-auto px-4 py-8">
+        <Button 
+          variant="outline" 
+          onClick={() => navigate(-1)}
+          className="mb-6 bg-white/10 backdrop-blur-sm"
+        >
+          ← Back to Main Page
+        </Button>
+
+        {/* Hero Section */}
+        <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             Call of Duty Mobile CP Shop
           </h1>
@@ -57,32 +67,31 @@ export default function CPShop() {
             {showPricing ? "Hide CP Prices" : "View CP Prices"}
           </Button>
         </div>
-      </div>
 
-      {/* Draw Costs Section */}
-      <div className="container mx-auto py-16 px-4">
-        <h2 className="text-3xl font-bold text-white mb-8 text-center">Draw Costs Guide</h2>
-        <ScrollArea className="h-[500px] rounded-md border border-primary/20 p-4">
-          <div className="grid gap-8">
-            {drawCosts.map((draw, index) => (
-              <div key={index} className="bg-secondary/20 rounded-lg p-6 backdrop-blur-sm">
-                <h3 className="text-xl font-bold text-primary mb-4">{draw.title}</h3>
-                <p className="text-white mb-2">Total CP required: {draw.totalCp}</p>
-                <div className="flex flex-wrap gap-2">
-                  {draw.costs.map((cost, i) => (
-                    <span key={i} className="bg-primary/20 text-white px-3 py-1 rounded">
-                      {cost} CP
-                    </span>
-                  ))}
+        {/* Draw Costs Section */}
+        <div className="max-w-4xl mx-auto mb-12">
+          <ScrollArea className="h-[500px] rounded-md border border-primary/20 p-4 bg-black/40 backdrop-blur-sm">
+            <div className="grid gap-8">
+              {drawCosts.map((draw, index) => (
+                <div key={index} className="bg-white/5 rounded-lg p-6 backdrop-blur-sm">
+                  <h3 className="text-xl font-bold text-primary mb-4">{draw.title}</h3>
+                  <p className="text-white mb-2">Total CP required: {draw.totalCp}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {draw.costs.map((cost, i) => (
+                      <span key={i} className="bg-primary/20 text-white px-3 py-1 rounded">
+                        {cost} CP
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </ScrollArea>
-      </div>
+              ))}
+            </div>
+          </ScrollArea>
+        </div>
 
-      {/* CP Pricing Section */}
-      {showPricing && <CPPricing />}
+        {/* CP Pricing Section */}
+        {showPricing && <CPPricing />}
+      </div>
     </div>
   );
 }
