@@ -68,14 +68,14 @@ export function EventTicketForm() {
           name="game"
           value={formData.game}
           onChange={handleChange}
-          className="w-full rounded-md bg-white/10 border-white/20 p-2"
+          className="w-full rounded-md bg-transparent border-white/20 text-white p-2"
         >
-          <option value="">Select a game</option>
-          <option value="fifa25">FIFA 25</option>
-          <option value="pubg">PUBG Mobile</option>
-          <option value="codm">Call of Duty Mobile</option>
-          <option value="tekken">Tekken</option>
-          <option value="efootball">eFootball Mobile</option>
+          <option value="" className="bg-black">Select a game</option>
+          <option value="fifa25" className="bg-black">FIFA 25</option>
+          <option value="pubg" className="bg-black">PUBG Mobile</option>
+          <option value="codm" className="bg-black">Call of Duty Mobile</option>
+          <option value="tekken" className="bg-black">Tekken</option>
+          <option value="efootball" className="bg-black">eFootball Mobile</option>
         </select>
       </div>
 

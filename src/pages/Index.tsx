@@ -67,7 +67,7 @@ const products = [
   {
     id: 8,
     name: "iPad Magnetic Iced Cooling Machine",
-    price: 2600,
+    price: 3500,
     category: "Cooling",
     image: "https://m.media-amazon.com/images/I/81NlBPgeocL._AC_UF1000,1000_QL80_.jpg",
     description: "Specialized cooling system designed for iPads and tablets.",
