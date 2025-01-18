@@ -1,9 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
-  const scrollToSection = (sectionId) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const navigate = useNavigate();
 
   return (
     <div
@@ -30,24 +29,24 @@ const Hero = () => {
 
         {/* Buttons */}
         <div className="flex flex-wrap justify-center gap-4 animate-fade-in">
-          <button
-            onClick={() => scrollToSection("shop-section")}
+          <Button
+            onClick={() => navigate("/shop")}
             className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded"
           >
             Shop Now for Products
-          </button>
-          <button
-            onClick={() => scrollToSection("cp-section")}
+          </Button>
+          <Button
+            onClick={() => navigate("/cp-purchase")}
             className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded"
           >
             Buy Codm Points from 254•CP-SHOP
-          </button>
-          <button
-            onClick={() => scrollToSection("uc-section")}
+          </Button>
+          <Button
+            onClick={() => navigate("/events")}
             className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded"
           >
-            Buy UC for PUBG
-          </button>
+            Buy Event Tickets
+          </Button>
         </div>
       </div>
     </div>

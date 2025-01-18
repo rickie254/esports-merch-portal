@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import ProductDetails from "./pages/ProductDetails";
 import CPPurchaseDetails from "./pages/CPPurchaseDetails";
 import CPPayment from "./pages/CPPayment";
+import Events from "./pages/Events";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/cp-purchase" element={<CPPurchaseDetails />} />
           <Route path="/cp-payment" element={<CPPayment />} />
+          <Route path="/events" element={<Events />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
