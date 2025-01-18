@@ -1,33 +1,99 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/hooks/use-toast";
-import { useState, useEffect } from "react";
 import { MessageCircle } from "lucide-react";
+import { useState } from "react";
+import { toast } from "@/hooks/use-toast";
 
 const paymentMethods = {
   Kenya: [
-    { name: "M-Pesa", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/M-PESA_LOGO-01.svg/2560px-M-PESA_LOGO-01.svg.png" },
-    { name: "KCB Bank", logo: "https://www.kcbgroup.com/wp-content/uploads/2021/06/kcb-1.png" },
-    { name: "Equity Bank", logo: "https://equitygroupholdings.com/ke/wp-content/uploads/sites/3/2021/05/Equity-Blue.png" },
+    { 
+      name: "M-Pesa", 
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/M-PESA_LOGO-01.svg/2560px-M-PESA_LOGO-01.svg.png",
+      type: "mobile"
+    },
+    { 
+      name: "KCB Bank", 
+      logo: "https://www.kcbgroup.com/wp-content/uploads/2021/06/kcb-1.png",
+      type: "bank"
+    },
+    { 
+      name: "Equity Bank", 
+      logo: "https://equitygroupholdings.com/ke/wp-content/uploads/sites/3/2021/05/Equity-Blue.png",
+      type: "bank"
+    },
+    {
+      name: "PayPal",
+      logo: "https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg",
+      type: "international"
+    },
+    {
+      name: "Visa",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png",
+      type: "card"
+    },
+    {
+      name: "Mastercard",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png",
+      type: "card"
+    }
   ],
   Nigeria: [
-    { name: "GTBank", logo: "https://www.gtbank.com/images/gtbank-logo.svg" },
-    { name: "Access Bank", logo: "https://www.accessbankplc.com/App_Themes/AccessBank/images/access-bank-logo.png" },
+    { 
+      name: "GTBank", 
+      logo: "https://www.gtbank.com/images/gtbank-logo.svg",
+      type: "bank"
+    },
+    { 
+      name: "Access Bank", 
+      logo: "https://www.accessbankplc.com/App_Themes/AccessBank/images/access-bank-logo.png",
+      type: "bank"
+    },
+    {
+      name: "PayPal",
+      logo: "https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg",
+      type: "international"
+    }
   ],
   Uganda: [
-    { name: "Stanbic Bank", logo: "https://www.stanbicbank.co.ug/static_file/Uganda/images/logo.png" },
-    { name: "MTN Mobile Money", logo: "https://mtn.co.ug/wp-content/uploads/2020/09/mtn-momo.png" },
+    { 
+      name: "Stanbic Bank", 
+      logo: "https://www.stanbicbank.co.ug/static_file/Uganda/images/logo.png",
+      type: "bank"
+    },
+    { 
+      name: "MTN Mobile Money", 
+      logo: "https://mtn.co.ug/wp-content/uploads/2020/09/mtn-momo.png",
+      type: "mobile"
+    }
   ],
   Tanzania: [
-    { name: "CRDB Bank", logo: "https://crdbbank.co.tz/wp-content/themes/crdb/assets/images/logo.png" },
-    { name: "NMB Bank", logo: "https://www.nmbbank.co.tz/images/nmb-logo.png" },
+    { 
+      name: "CRDB Bank", 
+      logo: "https://crdbbank.co.tz/wp-content/themes/crdb/assets/images/logo.png",
+      type: "bank"
+    },
+    { 
+      name: "NMB Bank", 
+      logo: "https://www.nmbbank.co.tz/images/nmb-logo.png",
+      type: "bank"
+    }
   ],
   International: [
-    { name: "PayPal", logo: "https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" },
-    { name: "Visa", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" },
-    { name: "Mastercard", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" },
+    { 
+      name: "PayPal", 
+      logo: "https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg",
+      type: "international"
+    },
+    { 
+      name: "Visa", 
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png",
+      type: "card"
+    },
+    { 
+      name: "Mastercard", 
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png",
+      type: "card"
+    }
   ]
 };
 
@@ -36,18 +102,12 @@ export default function CPPayment() {
   const navigate = useNavigate();
   const [selectedCountry, setSelectedCountry] = useState("Kenya");
   const [selectedMethod, setSelectedMethod] = useState("");
-  const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    if (!location.state?.cpDetails || !location.state?.userDetails) {
-      navigate("/");
-    }
-  }, [location.state, navigate]);
+  const handleSupport = () => {
+    window.open("https://wa.me/0748365147", "_blank");
+  };
 
-  const { cpDetails, userDetails } = location.state || {};
-
-  const handlePayment = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handlePayment = () => {
     if (!selectedMethod) {
       toast({
         title: "Error",
@@ -63,11 +123,10 @@ export default function CPPayment() {
     });
   };
 
-  const handleSupport = () => {
-    window.open("https://wa.me/0748365147", "_blank");
-  };
+  const { cpDetails, userDetails } = location.state || {};
 
   if (!cpDetails || !userDetails) {
+    navigate("/");
     return null;
   }
 

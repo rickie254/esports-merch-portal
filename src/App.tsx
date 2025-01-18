@@ -8,6 +8,7 @@ import ProductDetails from "./pages/ProductDetails";
 import CPPurchaseDetails from "./pages/CPPurchaseDetails";
 import CPPayment from "./pages/CPPayment";
 import Events from "./pages/Events";
+import CPShop from "./pages/CPShop";
 
 const queryClient = new QueryClient();
 
@@ -19,7 +20,8 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/products" element={<ProductDetails />} />
+          <Route path="/cp-shop" element={<CPShop />} />
           <Route path="/cp-purchase" element={<CPPurchaseDetails />} />
           <Route path="/cp-payment" element={<CPPayment />} />
           <Route path="/events" element={<Events />} />
