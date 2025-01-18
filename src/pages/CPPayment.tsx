@@ -104,7 +104,7 @@ export default function CPPayment() {
   const [selectedMethod, setSelectedMethod] = useState("");
 
   const handleSupport = () => {
-    window.open("https://wa.me/0748365147", "_blank");
+    window.open("https://wa.me/message/XRDL2G3MT3GZD1", "_blank");
   };
 
   const handlePayment = () => {
@@ -148,8 +148,7 @@ export default function CPPayment() {
         </Button>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {/* Payment Section */}
-          <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg shadow-xl border border-white/20">
+          <div className="bg-black/40 backdrop-blur-sm p-8 rounded-lg border border-white/20">
             <h2 className="text-2xl font-bold mb-6 text-white">Complete Your Purchase</h2>
             
             <div className="bg-primary/10 p-4 rounded-lg mb-6">
@@ -169,10 +168,12 @@ export default function CPPayment() {
                 <select
                   value={selectedCountry}
                   onChange={(e) => setSelectedCountry(e.target.value)}
-                  className="w-full p-2 rounded bg-white/20 text-white border border-white/20"
+                  className="w-full p-2 rounded bg-transparent text-white border border-white/20"
                 >
                   {Object.keys(paymentMethods).map((country) => (
-                    <option key={country} value={country}>{country}</option>
+                    <option key={country} value={country} className="bg-black text-white">
+                      {country}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -226,7 +227,6 @@ export default function CPPayment() {
             </div>
           </div>
 
-          {/* Support Section */}
           <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg shadow-xl border border-white/20">
             <h2 className="text-2xl font-bold mb-6 text-white">Payment Support</h2>
             
