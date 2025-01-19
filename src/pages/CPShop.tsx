@@ -21,7 +21,15 @@ export default function CPShop() {
           ← Back to Main Page
         </Button>
 
-        <div className="flex flex-col items-center justify-center space-y-8">
+        <div className="flex flex-col items-center justify-center mb-12">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Call of Duty Mobile CP Shop
+          </h1>
+        </div>
+
+        <CPPricing />
+
+        <div className="mt-16 flex flex-col items-center justify-center space-y-8">
           <img
             src="https://res.cloudinary.com/djeyyn3yi/image/upload/v1737109851/WhatsApp_Image_2025-01-17_at_11.54.30_0981e75f_odxs91.jpg"
             alt="CP Points"
@@ -29,10 +37,6 @@ export default function CPShop() {
           />
           
           <div className="text-center space-y-4 max-w-2xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Call of Duty Mobile CP Shop
-            </h1>
-            
             <div className="bg-black/30 backdrop-blur-md p-6 rounded-lg border border-primary/20">
               <div className="flex items-center justify-center mb-4">
                 <img
@@ -66,8 +70,6 @@ export default function CPShop() {
             </div>
           </div>
         </div>
-
-        <CPPricing />
       </div>
     </div>
   );
