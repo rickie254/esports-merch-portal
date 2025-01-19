@@ -8,6 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useCart } from "@/contexts/CartContext";
+import { toast } from "@/hooks/use-toast";
 
 interface ProductCardProps {
   id: number;
@@ -20,12 +22,28 @@ interface ProductCardProps {
 
 export function ProductCard({ id, name, price, image, category, description }: ProductCardProps) {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   const handleViewDetails = () => {
     navigate(`/product/${id}`, { 
       state: { 
         product: { id, name, price, image, category, description } 
       } 
+    });
+  };
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    addToCart({
+      id,
+      name,
+      price,
+      quantity: 1,
+      image,
+    });
+    toast({
+      title: "Added to cart",
+      description: `${name} has been added to your cart.`,
     });
   };
 
@@ -50,12 +68,19 @@ export function ProductCard({ id, name, price, image, category, description }: P
         </CardDescription>
         <p className="text-2xl font-bold text-primary">KES {price.toLocaleString()}</p>
       </CardContent>
-      <CardFooter className="p-4 pt-0">
+      <CardFooter className="p-4 pt-0 flex gap-2">
         <Button 
           onClick={handleViewDetails}
-          className="w-full bg-primary hover:bg-primary/90"
+          className="flex-1 bg-primary hover:bg-primary/90"
         >
           View Details
+        </Button>
+        <Button 
+          onClick={handleAddToCart}
+          variant="outline"
+          className="bg-white/10 hover:bg-white/20"
+        >
+          Add to Cart
         </Button>
       </CardFooter>
     </Card>
