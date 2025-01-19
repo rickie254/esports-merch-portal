@@ -47,7 +47,7 @@ export function CPPricing() {
   };
 
   return (
-    <section className="py-16 bg-secondary/10" id="cp-section">
+    <section className="py-16" id="cp-section">
       <div className="container">
         <div className="flex flex-col items-center mb-8">
           <img
@@ -55,8 +55,8 @@ export function CPPricing() {
             alt="CP Points"
             className="w-32 h-32 mb-4"
           />
-          <h2 className="text-3xl font-bold text-center">Buy CP Points</h2>
-          <div className="text-center mt-4 space-y-2 text-sm text-muted-foreground">
+          <h2 className="text-3xl font-bold text-center text-white mb-4">Buy CP Points</h2>
+          <div className="text-center mt-4 space-y-2 text-sm text-white/80 bg-black/30 backdrop-blur-md p-6 rounded-lg border border-primary/20">
             <p>SELECT THE PACK YOU WANT</p>
             <p>PROVIDE DETAILS &gt; SUBMIT ORDER </p>
             <p>FILL OUT PAYMENT OPTION  &gt; MAKE PAYMENT</p>
@@ -67,12 +67,16 @@ export function CPPricing() {
 
         <div className="max-w-md mx-auto mb-8">
           <Select value={selectedCountry} onValueChange={setSelectedCountry}>
-            <SelectTrigger>
+            <SelectTrigger className="bg-transparent backdrop-blur-sm border-primary text-white">
               <SelectValue placeholder="Select your country" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-black/80 backdrop-blur-sm border-primary">
               {Object.keys(cpPricing).map((country) => (
-                <SelectItem key={country} value={country}>
+                <SelectItem 
+                  key={country} 
+                  value={country}
+                  className="text-white hover:bg-primary/20"
+                >
                   {country} {country === "Kenya" ? "🇰🇪" : country === "Nigeria" ? "🇳🇬" : country === "Uganda" ? "🇺🇬" : "🇹🇿"}
                 </SelectItem>
               ))}
@@ -84,7 +88,7 @@ export function CPPricing() {
           {cpPricing[selectedCountry as keyof typeof cpPricing].map((tier) => (
             <div
               key={tier.points}
-              className="bg-secondary p-6 rounded-lg text-center hover:scale-105 transition-transform duration-300"
+              className="bg-black/30 backdrop-blur-md p-6 rounded-lg border border-primary/20 text-center hover:scale-105 transition-transform duration-300"
             >
               <div className="flex flex-col h-full justify-between">
                 <div className="mb-4">
@@ -96,7 +100,7 @@ export function CPPricing() {
                   <h3 className="text-2xl font-bold text-primary mb-2">
                     {tier.points.toLocaleString()} CP
                   </h3>
-                  <p className="text-xl font-semibold mb-4">
+                  <p className="text-xl font-semibold mb-4 text-white">
                     {tier.price.toLocaleString()} {tier.currency}
                   </p>
                 </div>
