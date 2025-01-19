@@ -8,6 +8,7 @@ import CPShop from "./pages/CPShop";
 import CPPurchaseDetails from "./pages/CPPurchaseDetails";
 import CPPayment from "./pages/CPPayment";
 import ProductDetail from "./pages/ProductDetail";
+import Events from "./pages/Events";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/cp-shop" element={<CPShop />} />
           <Route path="/cp-purchase" element={<CPPurchaseDetails />} />
           <Route path="/cp-payment" element={<CPPayment />} />
+          <Route path="/events" element={<Events />} />
         </Routes>
       </CartProvider>
     </Router>
