@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ProductGrid from "@/components/ProductGrid";
 import SearchAndFilter from "@/components/SearchAndFilter";
+import { Pagination } from "@/components/ui/pagination";
 
 const categories = ["All", "Cooling", "Gaming", "Audio", "Storage", "Accessories"];
 
@@ -204,7 +205,9 @@ const products = [
 const ProductDetails = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
+  const productsPerPage = 4; // Reduced from 6 to 4 for better layout
 
   const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
@@ -214,11 +217,16 @@ const ProductDetails = () => {
     return matchesCategory && matchesSearch;
   });
 
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
   return (
     <div 
       className="min-h-screen py-8"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(https://blog.activision.com/content/dam/atvi/activision/atvi-touchui/blog/callofduty/feature/codm/COD-LAUNCH-TOUT.jpg)`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(https://images.unsplash.com/photo-1487958449943-2429e8be8625)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed'
@@ -233,23 +241,34 @@ const ProductDetails = () => {
           ← Back to Home
         </Button>
 
-        <header className="py-6 px-4 border-b border-secondary/20 backdrop-blur-sm">
-          <h2 className="text-3xl font-bold text-center text-white">Our Gaming Products</h2>
+        <header className="py-6 px-4 border-b border-secondary/20 backdrop-blur-sm mb-8">
+          <h2 className="text-3xl font-bold text-center text-white">Gaming Products</h2>
+          <p className="text-center text-gray-300 mt-2">
+            Discover our premium selection of gaming accessories and equipment
+          </p>
         </header>
 
-        <main className="container py-8">
-          <div className="bg-black/40 backdrop-blur-sm p-6 rounded-lg">
-            <SearchAndFilter
-              categories={categories}
-              selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-            />
-            
-            <ProductGrid products={filteredProducts} />
-          </div>
-        </main>
+        <div className="bg-black/40 backdrop-blur-sm p-6 rounded-lg">
+          <SearchAndFilter
+            categories={categories}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
+          
+          <ProductGrid products={currentProducts} />
+
+          {totalPages > 1 && (
+            <div className="mt-8 flex justify-center">
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
