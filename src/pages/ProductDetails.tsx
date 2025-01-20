@@ -9,14 +9,70 @@ import { Button } from "@/components/ui/button";
 const categories = ["All", "Cooling", "Gaming", "Audio", "Storage", "Accessories"];
 
 const products = [
-  { id: 1, name: "Gaming Mouse", category: "Gaming" },
-  { id: 2, name: "Mechanical Keyboard", category: "Gaming" },
-  { id: 3, name: "Headset", category: "Audio" },
-  { id: 4, name: "External Hard Drive", category: "Storage" },
-  { id: 5, name: "Cooling Pad", category: "Cooling" },
-  { id: 6, name: "Mouse Pad", category: "Accessories" },
-  { id: 7, name: "Gaming Chair", category: "Accessories" },
-  { id: 8, name: "Webcam", category: "Audio" },
+  { 
+    id: 1, 
+    name: "Gaming Mouse", 
+    category: "Gaming",
+    price: 2999,
+    image: "/placeholder.svg",
+    description: "High-performance gaming mouse with RGB lighting"
+  },
+  { 
+    id: 2, 
+    name: "Mechanical Keyboard", 
+    category: "Gaming",
+    price: 5999,
+    image: "/placeholder.svg",
+    description: "Mechanical gaming keyboard with customizable switches"
+  },
+  { 
+    id: 3, 
+    name: "Headset", 
+    category: "Audio",
+    price: 3999,
+    image: "/placeholder.svg",
+    description: "Premium gaming headset with surround sound"
+  },
+  { 
+    id: 4, 
+    name: "External Hard Drive", 
+    category: "Storage",
+    price: 4999,
+    image: "/placeholder.svg",
+    description: "1TB external hard drive for extra storage"
+  },
+  { 
+    id: 5, 
+    name: "Cooling Pad", 
+    category: "Cooling",
+    price: 1999,
+    image: "/placeholder.svg",
+    description: "Laptop cooling pad with multiple fans"
+  },
+  { 
+    id: 6, 
+    name: "Mouse Pad", 
+    category: "Accessories",
+    price: 999,
+    image: "/placeholder.svg",
+    description: "Large gaming mouse pad with stitched edges"
+  },
+  { 
+    id: 7, 
+    name: "Gaming Chair", 
+    category: "Accessories",
+    price: 15999,
+    image: "/placeholder.svg",
+    description: "Ergonomic gaming chair with lumbar support"
+  },
+  { 
+    id: 8, 
+    name: "Webcam", 
+    category: "Audio",
+    price: 2999,
+    image: "/placeholder.svg",
+    description: "HD webcam for streaming and video calls"
+  },
 ];
 
 const ProductDetails = () => {
@@ -58,9 +114,9 @@ const ProductDetails = () => {
         <SearchAndFilter
           categories={categories}
           selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
+          setSelectedCategory={setSelectedCategory}
           searchQuery={searchQuery}
-          onSearchChange={setSearchQuery}
+          setSearchQuery={setSearchQuery}
         />
 
         <ProductGrid products={currentProducts} />
