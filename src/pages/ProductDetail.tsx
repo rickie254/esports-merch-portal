@@ -88,7 +88,7 @@ export default function ProductDetail() {
                 <Button
                   variant="outline"
                   className="w-full bg-green-600/20 hover:bg-green-600/30"
-                  onClick={() => window.open("https://wa.me/message/XRDL2G3MT3GZD1", "_blank")}
+                  onClick={() => window.open("https://wa.me/c/254748376744", "_blank")}
                 >
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Contact Support on WhatsApp
