@@ -1,95 +1,164 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import PageHeader from "@/components/PageHeader";
 import { useState } from "react";
-import { EventTicketForm } from "@/components/EventTicketForm";
+import { Input } from "@/components/ui/input";
+import { toast } from "@/hooks/use-toast";
 
-const games = [
-  {
-    name: "FIFA 25",
-    image: "https://i.ytimg.com/vi/GcGJ4fe0iNk/maxresdefault.jpg",
-    description: "Experience the thrill of FIFA 25 tournaments!"
-  },
-  {
-    name: "PUBG Mobile",
-    image: "https://cdn.gamerjournalist.com/primary/2023/05/PUBG-MOBILE-Championship-2023.jpg",
-    description: "Battle Royale at its finest!"
-  },
-  {
-    name: "Call of Duty Mobile",
-    image: "https://blog.activision.com/content/dam/atvi/activision/atvi-touchui/blog/callofduty/feature/codm/COD-LAUNCH-TOUT.jpg",
-    description: "Join the ultimate CODM tournament!"
-  },
-  {
-    name: "Tekken",
-    image: "https://cdn.akamai.steamstatic.com/steam/apps/1778820/capsule_616x353.jpg",
-    description: "Show your fighting game skills!"
-  },
-  {
-    name: "eFootball Mobile",
-    image: "https://www.konami.com/efootball/s/img/efootball2024_sns.jpg",
-    description: "Compete in mobile football excellence!"
-  }
-];
+interface Event {
+  id: number;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+  image: string;
+  price: number;
+}
 
 export default function Events() {
   const navigate = useNavigate();
-  const [showForm, setShowForm] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+  const [showRegistrationForm, setShowRegistrationForm] = useState(false);
+
+  const events: Event[] = [
+    {
+      id: 1,
+      title: "COD Mobile Tournament",
+      date: "2024-02-15",
+      location: "Nairobi, Kenya",
+      description: "Join our competitive COD Mobile tournament with cash prizes!",
+      image: "https://images.unsplash.com/photo-1542751371-adc38448a05e",
+      price: 1000
+    },
+    {
+      id: 2,
+      title: "Gaming Convention 2024",
+      date: "2024-03-01",
+      location: "Mombasa, Kenya",
+      description: "The biggest gaming event in East Africa",
+      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420",
+      price: 2000
+    }
+  ];
+
+  const handleRegister = (event: Event) => {
+    setSelectedEvent(event);
+    setShowRegistrationForm(true);
+  };
+
+  const handleSubmitRegistration = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Registration Successful",
+      description: "You have been registered for the event. Check your email for details.",
+    });
+    setShowRegistrationForm(false);
+  };
 
   return (
-    <div 
-      className="min-h-screen bg-cover bg-center"
-      style={{ 
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(https://blog.activision.com/content/dam/atvi/activision/atvi-touchui/blog/callofduty/feature/codm/COD-LAUNCH-TOUT.jpg)`,
-        backgroundAttachment: 'fixed'
-      }}
-    >
-      <div className="container mx-auto px-4 py-16">
+    <div className="min-h-screen py-8 bg-gradient-to-b from-black to-gray-900">
+      <div className="container mx-auto px-4">
         <Button 
           variant="outline" 
           onClick={() => navigate(-1)}
-          className="mb-6 bg-white/10 backdrop-blur-sm"
+          className="mb-6"
         >
           ← Back
         </Button>
 
-        <div className="max-w-6xl mx-auto">
-          {!showForm ? (
-            <>
-              <div className="text-center mb-12">
-                <h1 className="text-4xl font-bold text-white mb-4">Gaming Tournament Events</h1>
-                <Button 
-                  onClick={() => setShowForm(true)}
-                  className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-pulse"
+        <PageHeader 
+          title="Gaming Events & Tournaments"
+          subtitle="Join exciting gaming events and tournaments across Kenya"
+        />
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+          {events.map((event) => (
+            <div 
+              key={event.id}
+              className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden border border-white/20 hover:border-primary/50 transition-all duration-300"
+            >
+              <img
+                src={event.image}
+                alt={event.title}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-2">{event.title}</h3>
+                <p className="text-gray-300 mb-4">{event.description}</p>
+                <div className="space-y-2 text-sm text-gray-400">
+                  <p>Date: {new Date(event.date).toLocaleDateString()}</p>
+                  <p>Location: {event.location}</p>
+                  <p className="text-primary font-bold">
+                    Entry Fee: KES {event.price.toLocaleString()}
+                  </p>
+                </div>
+                <Button
+                  onClick={() => handleRegister(event)}
+                  className="w-full mt-4 bg-primary hover:bg-primary/90"
                 >
-                  Attend Finals Event - Get Your Ticket Now!
+                  Register Now
                 </Button>
               </div>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {games.map((game, index) => (
-                  <div key={index} className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden">
-                    <img 
-                      src={game.image} 
-                      alt={game.name} 
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="p-4">
-                      <h3 className="text-xl font-bold text-white mb-2">{game.name}</h3>
-                      <p className="text-white/80">{game.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </>
-          ) : (
-            <div className="bg-black/60 backdrop-blur-sm p-8 rounded-lg">
-              <h2 className="text-2xl font-bold text-white text-center mb-8">
-                Event Ticket Registration
-              </h2>
-              <EventTicketForm />
             </div>
-          )}
+          ))}
         </div>
+
+        {showRegistrationForm && selectedEvent && (
+          <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+            <div className="bg-black/90 p-8 rounded-lg w-full max-w-md border border-white/20">
+              <h2 className="text-2xl font-bold text-white mb-6">
+                Register for {selectedEvent.title}
+              </h2>
+              <form onSubmit={handleSubmitRegistration} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-white mb-1">
+                    Full Name
+                  </label>
+                  <Input
+                    required
+                    className="bg-white/20 text-white"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-white mb-1">
+                    Email
+                  </label>
+                  <Input
+                    type="email"
+                    required
+                    className="bg-white/20 text-white"
+                    placeholder="Enter your email"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-white mb-1">
+                    Phone Number
+                  </label>
+                  <Input
+                    type="tel"
+                    required
+                    className="bg-white/20 text-white"
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+                <div className="flex gap-4 mt-6">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => setShowRegistrationForm(false)}
+                    className="flex-1"
+                  >
+                    Cancel
+                  </Button>
+                  <Button type="submit" className="flex-1 bg-primary hover:bg-primary/90">
+                    Submit
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

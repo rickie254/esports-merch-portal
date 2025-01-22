@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
+import PageHeader from "@/components/PageHeader";
 
 const paymentMethods = {
   Kenya: [
@@ -91,10 +92,13 @@ export default function ProductPayment() {
           ← Back
         </Button>
 
+        <PageHeader 
+          title="Complete Your Purchase"
+          subtitle="Choose your preferred payment method"
+        />
+
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-black/40 backdrop-blur-sm p-8 rounded-lg border border-white/20">
-            <h2 className="text-2xl font-bold mb-6 text-white">Complete Your Purchase</h2>
-            
             <div className="bg-primary/10 p-4 rounded-lg mb-6">
               <h3 className="text-lg text-white mb-2">Order Summary</h3>
               <p className="text-white/90">Total Items: {orderDetails.totalItems}</p>

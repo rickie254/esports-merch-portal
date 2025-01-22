@@ -1,6 +1,7 @@
 import { CPPricing } from "@/components/CPPricing";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import PageHeader from "@/components/PageHeader";
 
 export default function CPShop() {
   const navigate = useNavigate();
@@ -21,11 +22,10 @@ export default function CPShop() {
           ← Back to Main Page
         </Button>
 
-        <div className="flex flex-col items-center justify-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Call of Duty Mobile CP Shop
-          </h1>
-        </div>
+        <PageHeader 
+          title="Call of Duty Mobile CP Shop"
+          subtitle="Get your CP points instantly and securely"
+        />
 
         <CPPricing />
 
