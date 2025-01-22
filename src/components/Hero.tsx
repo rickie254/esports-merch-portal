@@ -15,7 +15,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50 backdrop-blur-sm"></div>
 
       <div className="relative z-10 text-center space-y-8 max-w-4xl mx-auto px-4">
-        <h1 className="text-5xl md:text-7xl font-bold text-white animate-fade-in bg-clip-text text-transparent bg-gradient-to-r from-primary to-white">
+        <h1 className="text-5xl md:text-7xl font-bold animate-text bg-gradient-to-r from-primary via-purple-500 to-white bg-clip-text text-transparent bg-300% animate-gradient">
           Kenya Universities Esports Shop
         </h1>
         

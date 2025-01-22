@@ -27,13 +27,17 @@ export default function Checkout() {
       return;
     }
     
-    // Here you would typically handle payment processing
-    toast({
-      title: "Order Placed",
-      description: "Your order has been successfully placed!",
+    // Navigate to payment page with order details
+    navigate("/product-payment", {
+      state: {
+        orderDetails: {
+          items,
+          total,
+          totalItems: items.length,
+          shippingDetails: formData
+        }
+      }
     });
-    clearCart();
-    navigate("/");
   };
 
   if (items.length === 0) {
@@ -62,26 +66,30 @@ export default function Checkout() {
 
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-black/40 backdrop-blur-sm rounded-lg p-8">
-            <h2 className="text-2xl font-bold text-white mb-6">Order Summary</h2>
+            <h1 className="text-3xl font-bold text-white mb-8">Order Summary</h1>
+
             <div className="space-y-4">
               {items.map((item) => (
-                <div key={item.id} className="flex items-center gap-4">
+                <div 
+                  key={item.id}
+                  className="flex items-center gap-4 p-4 bg-white/5 rounded-lg"
+                >
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-16 h-16 object-cover rounded"
+                    className="w-24 h-24 object-cover rounded"
                   />
                   <div className="flex-1">
-                    <h3 className="text-white">{item.name}</h3>
-                    <p className="text-sm text-gray-300">
-                      {item.quantity} x KES {item.price.toLocaleString()}
-                    </p>
+                    <h3 className="text-lg font-semibold text-white">{item.name}</h3>
+                    <p className="text-primary">KES {item.price.toLocaleString()}</p>
+                    <p className="text-sm text-gray-300">Quantity: {item.quantity}</p>
                   </div>
                   <p className="text-primary font-semibold">
                     KES {(item.price * item.quantity).toLocaleString()}
                   </p>
                 </div>
               ))}
+
               <div className="border-t border-white/10 pt-4 mt-4">
                 <div className="flex justify-between items-center">
                   <span className="text-white">Total:</span>
@@ -144,7 +152,7 @@ export default function Checkout() {
                 />
               </div>
               <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-                Place Order
+                Proceed to Payment
               </Button>
             </form>
 
