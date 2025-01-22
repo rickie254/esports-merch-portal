@@ -48,7 +48,7 @@ export function ProductCard({ id, name, price, image, category, description }: P
   };
 
   return (
-    <Card className="bg-white/10 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105">
+    <Card className="bg-white/10 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 cursor-pointer" onClick={handleViewDetails}>
       <CardHeader className="p-0">
         <div className="relative h-48 overflow-hidden rounded-t-lg">
           <img

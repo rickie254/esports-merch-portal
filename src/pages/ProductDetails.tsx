@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import ProductGrid from "@/components/ProductGrid";
 import SearchAndFilter from "@/components/SearchAndFilter";
 import { Pagination } from "@/components/ui/pagination";
+import { NavigationButtons } from "@/components/NavigationButtons";
 
 const categories = ["All", "Cooling", "Gaming", "Audio", "Storage", "Accessories"];
 
@@ -207,7 +208,7 @@ const ProductDetails = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  const productsPerPage = 4; // Reduced from 6 to 4 for better layout
+  const productsPerPage = 4;
 
   const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
@@ -233,6 +234,8 @@ const ProductDetails = () => {
       }}
     >
       <div className="container">
+        <NavigationButtons />
+        
         <Button 
           variant="outline" 
           onClick={() => navigate('/')}
