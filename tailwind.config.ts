@@ -70,12 +70,17 @@ export default {
           "50%": { backgroundPosition: "100% 50%" },
           "100%": { backgroundPosition: "0% 50%" },
         },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-red": "pulse-red 2s infinite",
-        "gradient": "gradient 8s ease infinite",
+        "gradient": "gradient 4s ease infinite",
+        "fade-in": "fade-in 0.5s ease-out forwards"
       },
     },
   },
