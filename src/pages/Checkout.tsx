@@ -1,32 +1,15 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { useCart } from "@/contexts/CartContext";
-import { toast } from "@/hooks/use-toast";
 import { MessageCircle } from "lucide-react";
+import PageHeader from "@/components/PageHeader";
+import CheckoutForm, { CheckoutFormData } from "@/components/CheckoutForm";
 
 export default function Checkout() {
   const navigate = useNavigate();
-  const { items, total, clearCart } = useCart();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-  });
+  const { items, total } = useCart();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.phone || !formData.address) {
-      toast({
-        title: "Error",
-        description: "Please fill in all fields",
-        variant: "destructive",
-      });
-      return;
-    }
-    
+  const handleSubmit = (formData: CheckoutFormData) => {
     // Navigate to payment page with order details
     navigate("/product-payment", {
       state: {
@@ -64,10 +47,14 @@ export default function Checkout() {
           ← Back
         </Button>
 
+        <PageHeader 
+          title="Complete Your Order" 
+          subtitle="Fill in your shipping details to proceed with the purchase"
+        />
+
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-black/40 backdrop-blur-sm rounded-lg p-8">
-            <h1 className="text-3xl font-bold text-white mb-8">Order Summary</h1>
-
+            <h2 className="text-2xl font-bold text-white mb-6">Order Summary</h2>
             <div className="space-y-4">
               {items.map((item) => (
                 <div 
@@ -102,59 +89,7 @@ export default function Checkout() {
           </div>
 
           <div className="bg-black/40 backdrop-blur-sm rounded-lg p-8">
-            <h2 className="text-2xl font-bold text-white mb-6">Shipping Details</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-white mb-1">
-                  Full Name
-                </label>
-                <Input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="bg-white/20 text-white"
-                  placeholder="Enter your full name"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-white mb-1">
-                  Email
-                </label>
-                <Input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="bg-white/20 text-white"
-                  placeholder="Enter your email"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-white mb-1">
-                  Phone Number
-                </label>
-                <Input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="bg-white/20 text-white"
-                  placeholder="Enter your phone number"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-white mb-1">
-                  Shipping Address
-                </label>
-                <Input
-                  value={formData.address}
-                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                  className="bg-white/20 text-white"
-                  placeholder="Enter your shipping address"
-                />
-              </div>
-              <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-                Proceed to Payment
-              </Button>
-            </form>
+            <CheckoutForm onSubmit={handleSubmit} />
 
             <div className="mt-6">
               <Button

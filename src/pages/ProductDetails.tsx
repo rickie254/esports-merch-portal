@@ -5,6 +5,7 @@ import ProductGrid from "@/components/ProductGrid";
 import SearchAndFilter from "@/components/SearchAndFilter";
 import { Pagination } from "@/components/ui/pagination";
 import { NavigationButtons } from "@/components/NavigationButtons";
+import PageHeader from "@/components/PageHeader";
 
 const categories = ["All", "Cooling", "Gaming", "Audio", "Storage", "Accessories"];
 
@@ -244,12 +245,10 @@ const ProductDetails = () => {
           ← Back to Home
         </Button>
 
-        <header className="py-6 px-4 border-b border-secondary/20 backdrop-blur-sm mb-8">
-          <h2 className="text-3xl font-bold text-center text-white">Gaming Products</h2>
-          <p className="text-center text-gray-300 mt-2">
-            Discover our premium selection of gaming accessories and equipment
-          </p>
-        </header>
+        <PageHeader
+          title="Gaming Products"
+          subtitle="Discover our premium selection of gaming accessories and equipment"
+        />
 
         <div className="bg-black/40 backdrop-blur-sm p-6 rounded-lg">
           <SearchAndFilter
