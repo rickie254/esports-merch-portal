@@ -10,6 +10,7 @@ import CPPayment from "./pages/CPPayment";
 import ProductDetail from "./pages/ProductDetail";
 import Events from "./pages/Events";
 import ProductPayment from "./pages/ProductPayment";
+import PaymentPage from "./pages/PaymentPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/payment" element={<PaymentPage />} />
           <Route path="/product-payment" element={<ProductPayment />} />
           <Route path="/cp-shop" element={<CPShop />} />
           <Route path="/cp-purchase" element={<CPPurchaseDetails />} />

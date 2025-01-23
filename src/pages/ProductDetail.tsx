@@ -39,7 +39,7 @@ export default function ProductDetail() {
         backgroundAttachment: 'fixed'
       }}
     >
-      <div className="container">
+      <div className="container max-w-4xl mx-auto px-4">
         <Button 
           variant="outline" 
           onClick={() => navigate(-1)}
@@ -49,9 +49,9 @@ export default function ProductDetail() {
         </Button>
 
         <div className="bg-black/40 backdrop-blur-sm rounded-lg overflow-hidden">
-          <div className="grid md:grid-cols-2 gap-8 p-8">
+          <div className="grid md:grid-cols-2 gap-6 p-6 md:p-8">
             <div className="space-y-4">
-              <div className="relative h-96 rounded-lg overflow-hidden">
+              <div className="relative h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
@@ -61,10 +61,10 @@ export default function ProductDetail() {
             </div>
 
             <div className="space-y-6">
-              <h1 className="text-3xl font-bold text-white">{product.name}</h1>
+              <h1 className="text-2xl md:text-3xl font-bold text-white">{product.name}</h1>
               <p className="text-gray-300">{product.description}</p>
               <div className="space-y-4">
-                <p className="text-3xl font-bold text-primary">
+                <p className="text-2xl md:text-3xl font-bold text-primary">
                   KES {product.price.toLocaleString()}
                 </p>
                 <div className="space-y-2">
@@ -77,9 +77,9 @@ export default function ProductDetail() {
                   <Button
                     variant="outline"
                     className="w-full bg-white/10 hover:bg-white/20"
-                    onClick={() => navigate("/checkout")}
+                    onClick={() => navigate("/payment")}
                   >
-                    Proceed to Checkout
+                    Buy Now
                   </Button>
                 </div>
               </div>
@@ -88,7 +88,7 @@ export default function ProductDetail() {
                 <Button
                   variant="outline"
                   className="w-full bg-green-600/20 hover:bg-green-600/30"
-                  onClick={() => window.open("https://wa.me/c/254748376744", "_blank")}
+                  onClick={() => window.open("https://wa.me/254748376744", "_blank")}
                 >
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Contact Support on WhatsApp

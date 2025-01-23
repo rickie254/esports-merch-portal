@@ -17,7 +17,7 @@ export default function Cart() {
         backgroundAttachment: 'fixed'
       }}
     >
-      <div className="container">
+      <div className="container max-w-4xl mx-auto px-4">
         <Button 
           variant="outline" 
           onClick={() => navigate(-1)}
@@ -26,8 +26,8 @@ export default function Cart() {
           ← Back
         </Button>
 
-        <div className="bg-black/40 backdrop-blur-sm rounded-lg p-8">
-          <h1 className="text-3xl font-bold text-white mb-8">Shopping Cart</h1>
+        <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 md:p-8">
+          <h1 className="text-2xl md:text-3xl font-bold text-white mb-6">Shopping Cart</h1>
 
           {items.length === 0 ? (
             <div className="text-center py-12">
@@ -40,11 +40,11 @@ export default function Cart() {
               </Button>
             </div>
           ) : (
-            <div className="space-y-8">
+            <div className="space-y-6">
               {items.map((item) => (
                 <div 
                   key={item.id}
-                  className="flex items-center gap-4 p-4 bg-white/5 rounded-lg"
+                  className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 bg-white/5 rounded-lg"
                 >
                   <img
                     src={item.image}
@@ -93,10 +93,10 @@ export default function Cart() {
                   </span>
                 </div>
                 <Button
-                  onClick={() => navigate("/checkout")}
+                  onClick={() => navigate("/payment")}
                   className="w-full bg-primary hover:bg-primary/90"
                 >
-                  Proceed to Checkout
+                  Proceed to Payment
                 </Button>
               </div>
             </div>
