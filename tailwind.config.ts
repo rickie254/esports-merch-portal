@@ -79,7 +79,7 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-red": "pulse-red 2s infinite",
-        "gradient": "gradient 2s ease infinite", // Made animation faster (2s instead of 4s)
+        "gradient": "gradient 2s ease infinite",
         "fade-in": "fade-in 0.5s ease-out forwards"
       },
     },

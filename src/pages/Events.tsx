@@ -71,7 +71,7 @@ export default function Events() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <Button 
           variant="outline" 
           onClick={() => navigate(-1)}
@@ -85,7 +85,7 @@ export default function Events() {
           subtitle="Join the most prestigious gaming tournament in Kenya"
         />
 
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-2">
           {events.map((event) => (
             <div 
               key={event.id}
@@ -98,20 +98,24 @@ export default function Events() {
                   className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-white mb-2">{event.title}</h3>
-                <p className="text-gray-300 mb-4">{event.description}</p>
-                <div className="space-y-2 text-sm text-gray-400">
-                  <p>Date: {new Date(event.date).toLocaleDateString()}</p>
+              <div className="p-4">
+                <h3 className="text-xl font-bold text-white mb-2">{event.title}</h3>
+                <p className="text-sm text-gray-300 mb-3">{event.description}</p>
+                <div className="space-y-1.5 text-sm text-gray-400">
+                  <div className="relative overflow-hidden">
+                    <p className="animate-pulse-red inline-block bg-primary/20 px-2 py-1 rounded">
+                      Coming Soon: {new Date(event.date).toLocaleDateString()}
+                    </p>
+                  </div>
                   <p>Location: {event.location}</p>
                   <p>Organizer: {event.organizer}</p>
-                  <p className="text-primary font-bold text-lg">
+                  <p className="text-primary font-bold">
                     Entry Fee: KES {event.price.toLocaleString()}
                   </p>
                 </div>
                 <Button
                   onClick={() => handleRegister(event)}
-                  className="w-full mt-6 bg-primary hover:bg-primary/90 transition-colors duration-300"
+                  className="w-full mt-4 bg-primary hover:bg-primary/90 transition-colors duration-300"
                 >
                   Register Now
                 </Button>
