@@ -38,7 +38,7 @@ export default function Events() {
       date: "2024-03-01",
       location: "KCA University, Nairobi",
       description: "The grand finals of KUER gaming tournament. Who will be crowned the ultimate champion?",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYH0U-tv0RMItvPqZXx-_E7TtxX4Ltlbg5kw&s",
+      image: "https://thebusinessofesports.com/wp-content/uploads/2022/06/teknos-associates-gamers-make-money-image001.jpg",
       price: 2000,
       organizer: "KUER"
     }
@@ -71,7 +71,7 @@ export default function Events() {
         }}
       />
 
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <Button 
           variant="outline" 
           onClick={() => navigate(-1)}
@@ -85,7 +85,7 @@ export default function Events() {
           subtitle="Join the most prestigious gaming tournament in Kenya"
         />
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-2">
           {events.map((event) => (
             <div 
               key={event.id}
@@ -98,10 +98,10 @@ export default function Events() {
                   className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
-              <div className="p-4">
-                <h3 className="text-xl font-bold text-white mb-2">{event.title}</h3>
-                <p className="text-sm text-gray-300 mb-3">{event.description}</p>
-                <div className="space-y-1.5 text-sm text-gray-400">
+              <div className="p-3">
+                <h3 className="text-lg font-bold text-white mb-1.5">{event.title}</h3>
+                <p className="text-xs text-gray-300 mb-2">{event.description}</p>
+                <div className="space-y-1 text-xs text-gray-400">
                   <div className="relative overflow-hidden">
                     <p className="animate-pulse-red inline-block bg-primary/20 px-2 py-1 rounded">
                       Coming Soon: {new Date(event.date).toLocaleDateString()}
@@ -115,7 +115,7 @@ export default function Events() {
                 </div>
                 <Button
                   onClick={() => handleRegister(event)}
-                  className="w-full mt-4 bg-primary hover:bg-primary/90 transition-colors duration-300"
+                  className="w-full mt-3 bg-primary hover:bg-primary/90 transition-colors duration-300"
                 >
                   Register Now
                 </Button>
