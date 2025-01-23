@@ -30,7 +30,7 @@ export default function Events() {
       description: "Semi-finals of the KUER gaming tournament hosted by AfriGamers. Join us for an epic gaming showdown!",
       image: "https://helios-i.mashable.com/imagery/articles/02rkxB16ImHPMfzmrUgxkSO/hero-image.fill.size_1248x702.v1623365649.jpg",
       price: 1500,
-      organizer: "AfriGamers"
+      organizer: "KUER"
     },
     {
       id: 2,
@@ -40,7 +40,7 @@ export default function Events() {
       description: "The grand finals of KUER gaming tournament. Who will be crowned the ultimate champion?",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYH0U-tv0RMItvPqZXx-_E7TtxX4Ltlbg5kw&s",
       price: 2000,
-      organizer: "KCA University"
+      organizer: "KUER"
     }
   ];
 
@@ -59,17 +59,23 @@ export default function Events() {
   };
 
   return (
-    <div 
-      className="min-h-screen py-8 bg-cover bg-center bg-no-repeat bg-fixed"
-      style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://akm-img-a-in.tosshub.com/sites/itgaming/resources/202411/image-1200x675-28261124061048.png')`,
-      }}
-    >
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      <div 
+        className="fixed inset-0 -z-10"
+        style={{
+          backgroundImage: `url('https://akm-img-a-in.tosshub.com/sites/itgaming/resources/202411/image-1200x675-28261124061048.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          filter: 'brightness(0.3)',
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto">
         <Button 
           variant="outline" 
           onClick={() => navigate(-1)}
-          className="mb-6 bg-black/50 backdrop-blur-sm border-white/20 hover:bg-white/10"
+          className="mb-8 bg-black/50 backdrop-blur-sm border-white/20 hover:bg-white/10"
         >
           ← Back
         </Button>
@@ -79,31 +85,33 @@ export default function Events() {
           subtitle="Join the most prestigious gaming tournament in Kenya"
         />
 
-        <div className="grid md:grid-cols-2 gap-6 mt-8">
+        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-2">
           {events.map((event) => (
             <div 
               key={event.id}
-              className="bg-black/60 backdrop-blur-sm rounded-lg overflow-hidden border border-white/20 hover:border-primary/50 transition-all duration-300 animate-fade-in"
+              className="group relative overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm border border-white/10 hover:border-primary/50 transition-all duration-300"
             >
-              <img
-                src={event.image}
-                alt={event.title}
-                className="w-full h-48 object-cover"
-              />
+              <div className="aspect-video overflow-hidden">
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">{event.title}</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">{event.title}</h3>
                 <p className="text-gray-300 mb-4">{event.description}</p>
                 <div className="space-y-2 text-sm text-gray-400">
                   <p>Date: {new Date(event.date).toLocaleDateString()}</p>
                   <p>Location: {event.location}</p>
                   <p>Organizer: {event.organizer}</p>
-                  <p className="text-primary font-bold">
+                  <p className="text-primary font-bold text-lg">
                     Entry Fee: KES {event.price.toLocaleString()}
                   </p>
                 </div>
                 <Button
                   onClick={() => handleRegister(event)}
-                  className="w-full mt-4 bg-primary hover:bg-primary/90"
+                  className="w-full mt-6 bg-primary hover:bg-primary/90 transition-colors duration-300"
                 >
                   Register Now
                 </Button>
