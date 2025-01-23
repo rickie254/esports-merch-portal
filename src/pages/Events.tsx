@@ -13,6 +13,7 @@ interface Event {
   description: string;
   image: string;
   price: number;
+  organizer: string;
 }
 
 export default function Events() {
@@ -23,21 +24,23 @@ export default function Events() {
   const events: Event[] = [
     {
       id: 1,
-      title: "COD Mobile Tournament",
-      date: "2024-02-15",
-      location: "Nairobi, Kenya",
-      description: "Join our competitive COD Mobile tournament with cash prizes!",
-      image: "https://images.unsplash.com/photo-1542751371-adc38448a05e",
-      price: 1000
+      title: "KUER Semi Finals",
+      date: "2024-02-20",
+      location: "AfriGamers Arena, Nairobi",
+      description: "Semi-finals of the KUER gaming tournament hosted by AfriGamers. Join us for an epic gaming showdown!",
+      image: "https://helios-i.mashable.com/imagery/articles/02rkxB16ImHPMfzmrUgxkSO/hero-image.fill.size_1248x702.v1623365649.jpg",
+      price: 1500,
+      organizer: "AfriGamers"
     },
     {
       id: 2,
-      title: "Gaming Convention 2024",
+      title: "KUER Finals",
       date: "2024-03-01",
-      location: "Mombasa, Kenya",
-      description: "The biggest gaming event in East Africa",
-      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420",
-      price: 2000
+      location: "KCA University, Nairobi",
+      description: "The grand finals of KUER gaming tournament. Who will be crowned the ultimate champion?",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYH0U-tv0RMItvPqZXx-_E7TtxX4Ltlbg5kw&s",
+      price: 2000,
+      organizer: "KCA University"
     }
   ];
 
@@ -56,26 +59,31 @@ export default function Events() {
   };
 
   return (
-    <div className="min-h-screen py-8 bg-gradient-to-b from-black to-gray-900">
+    <div 
+      className="min-h-screen py-8 bg-cover bg-center bg-no-repeat bg-fixed"
+      style={{
+        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://akm-img-a-in.tosshub.com/sites/itgaming/resources/202411/image-1200x675-28261124061048.png')`,
+      }}
+    >
       <div className="container mx-auto px-4">
         <Button 
           variant="outline" 
           onClick={() => navigate(-1)}
-          className="mb-6"
+          className="mb-6 bg-black/50 backdrop-blur-sm border-white/20 hover:bg-white/10"
         >
           ← Back
         </Button>
 
         <PageHeader 
-          title="Gaming Events & Tournaments"
-          subtitle="Join exciting gaming events and tournaments across Kenya"
+          title="KUER Gaming Tournament"
+          subtitle="Join the most prestigious gaming tournament in Kenya"
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <div className="grid md:grid-cols-2 gap-6 mt-8">
           {events.map((event) => (
             <div 
               key={event.id}
-              className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden border border-white/20 hover:border-primary/50 transition-all duration-300"
+              className="bg-black/60 backdrop-blur-sm rounded-lg overflow-hidden border border-white/20 hover:border-primary/50 transition-all duration-300 animate-fade-in"
             >
               <img
                 src={event.image}
@@ -88,6 +96,7 @@ export default function Events() {
                 <div className="space-y-2 text-sm text-gray-400">
                   <p>Date: {new Date(event.date).toLocaleDateString()}</p>
                   <p>Location: {event.location}</p>
+                  <p>Organizer: {event.organizer}</p>
                   <p className="text-primary font-bold">
                     Entry Fee: KES {event.price.toLocaleString()}
                   </p>
@@ -104,7 +113,7 @@ export default function Events() {
         </div>
 
         {showRegistrationForm && selectedEvent && (
-          <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
             <div className="bg-black/90 p-8 rounded-lg w-full max-w-md border border-white/20">
               <h2 className="text-2xl font-bold text-white mb-6">
                 Register for {selectedEvent.title}
@@ -116,7 +125,7 @@ export default function Events() {
                   </label>
                   <Input
                     required
-                    className="bg-white/20 text-white"
+                    className="bg-white/10 border-white/20"
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -127,7 +136,7 @@ export default function Events() {
                   <Input
                     type="email"
                     required
-                    className="bg-white/20 text-white"
+                    className="bg-white/10 border-white/20"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -138,7 +147,7 @@ export default function Events() {
                   <Input
                     type="tel"
                     required
-                    className="bg-white/20 text-white"
+                    className="bg-white/10 border-white/20"
                     placeholder="Enter your phone number"
                   />
                 </div>
@@ -147,7 +156,7 @@ export default function Events() {
                     type="button"
                     variant="outline"
                     onClick={() => setShowRegistrationForm(false)}
-                    className="flex-1"
+                    className="flex-1 bg-white/10 border-white/20"
                   >
                     Cancel
                   </Button>
