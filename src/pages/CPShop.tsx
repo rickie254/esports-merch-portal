@@ -23,7 +23,7 @@ export default function CPShop() {
         </Button>
 
         <PageHeader 
-          title="Call of Duty Mobile CP Shop"
+          title="254•CP-SHOP"
           subtitle="Get your CP points instantly and securely"
         />
 
