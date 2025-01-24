@@ -6,12 +6,19 @@
 
 ## What technologies are used for this project?
 
-This project is built with .
+This project is built with:
 
 - Vite
-- TypeScript
+- JavaScript
 - React
-- shadcn-ui
 - Tailwind CSS
+- React Router DOM
+- Context API for state management
 
+## Features
 
+- Responsive design
+- Shopping cart functionality
+- Product browsing
+- CP Points shop
+- Tournament tickets
