@@ -25,19 +25,19 @@ export function EventTicketForm() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 rounded-lg bg-black/40 backdrop-blur-sm">
+    <div className="w-full max-w-md mx-auto p-4 sm:p-6 rounded-lg bg-black/40 backdrop-blur-sm">
       <div className="text-center mb-6">
         <img
           src="https://res.cloudinary.com/djeyyn3yi/image/upload/v1737109851/WhatsApp_Image_2025-01-17_at_11.54.30_0981e75f_odxs91.jpg"
           alt="Security"
-          className="w-16 h-16 mx-auto mb-4"
+          className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-4"
         />
         <p className="text-white/80 text-sm">
           Your account details are secure with us. We prioritize your privacy and security.
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
         <div className="space-y-2">
           <label className="text-sm font-medium text-white">Full Name</label>
           <Input
@@ -80,7 +80,7 @@ export function EventTicketForm() {
             name="game"
             value={formData.game}
             onChange={handleChange}
-            className="w-full rounded-md bg-transparent border border-white/20 text-white p-2"
+            className="w-full rounded-md bg-white/10 border border-white/20 text-white p-2"
           >
             <option value="" className="bg-black">Select a game</option>
             <option value="fifa25" className="bg-black">FIFA 25</option>
@@ -92,7 +92,7 @@ export function EventTicketForm() {
         </div>
 
         <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-          Proceed to Payment
+          Pay with M-Pesa
         </Button>
       </form>
     </div>
