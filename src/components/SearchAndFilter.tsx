@@ -1,13 +1,21 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
+interface SearchAndFilterProps {
+  categories: string[];
+  selectedCategory: string;
+  setSelectedCategory: (category: string) => void;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+}
+
 const SearchAndFilter = ({
   categories,
   selectedCategory,
   setSelectedCategory,
   searchQuery,
   setSearchQuery,
-}) => (
+}: SearchAndFilterProps) => (
   <div className="space-y-6 mb-8">
     <div className="max-w-md mx-auto">
       <Input

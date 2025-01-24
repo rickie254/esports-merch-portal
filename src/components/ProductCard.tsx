@@ -11,7 +11,16 @@ import {
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "@/hooks/use-toast";
 
-export function ProductCard({ id, name, price, image, category, description }) {
+interface ProductCardProps {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  category: string;
+  description?: string;
+}
+
+export function ProductCard({ id, name, price, image, category, description }: ProductCardProps) {
   const navigate = useNavigate();
   const { addToCart } = useCart();
 
@@ -23,7 +32,7 @@ export function ProductCard({ id, name, price, image, category, description }) {
     });
   };
 
-  const handleAddToCart = (e) => {
+  const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
     addToCart({
       id,

@@ -1,4 +1,9 @@
-const PageHeader = ({ title, subtitle }) => {
+interface PageHeaderProps {
+  title: string;
+  subtitle?: string;
+}
+
+const PageHeader = ({ title, subtitle }: PageHeaderProps) => {
   return (
     <header className="py-6 px-4 border-b border-secondary/20 backdrop-blur-sm mb-8">
       <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-300% animate-gradient bg-clip-text text-transparent">
