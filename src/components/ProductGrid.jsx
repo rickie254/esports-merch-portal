@@ -1,19 +1,6 @@
 import { ProductCard } from "@/components/ProductCard";
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  category: string;
-  image: string;
-  description: string;
-}
-
-interface ProductGridProps {
-  products: Product[];
-}
-
-const ProductGrid = ({ products }: ProductGridProps) => (
+const ProductGrid = ({ products }) => (
   <>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {products.map((product) => (
