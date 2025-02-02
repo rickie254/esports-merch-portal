@@ -8,19 +8,19 @@ export function NavigationButtons() {
   const { items } = useCart();
 
   return (
-    <div className="container py-8">
+    <div className="container py-4 sm:py-6 lg:py-8">
       <div className="flex flex-wrap justify-between items-center gap-4">
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-2 sm:gap-4">
           <Button 
             variant="outline" 
-            className="bg-white/10 backdrop-blur-sm"
+            className="bg-white/10 backdrop-blur-sm text-sm sm:text-base"
             onClick={() => navigate('/products')}
           >
             Products
           </Button>
           <Button 
             variant="outline" 
-            className="bg-white/10 backdrop-blur-sm"
+            className="bg-white/10 backdrop-blur-sm text-sm sm:text-base"
             onClick={() => navigate('/events')}
           >
             Events
@@ -28,7 +28,7 @@ export function NavigationButtons() {
         </div>
         <Button 
           variant="outline" 
-          className="bg-white/10 backdrop-blur-sm relative"
+          className="bg-white/10 backdrop-blur-sm relative text-sm sm:text-base"
           onClick={() => navigate('/cart')}
         >
           <ShoppingCart className="mr-2 h-4 w-4" />

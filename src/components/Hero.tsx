@@ -13,7 +13,7 @@ const Hero = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50 backdrop-blur-sm"></div>
 
-      <div className="relative z-10 text-center space-y-4 md:space-y-8 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 text-center space-y-6 md:space-y-8 lg:space-y-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="animate-fade-in">
           <HeroTitle />
         </div>
