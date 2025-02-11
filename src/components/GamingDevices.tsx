@@ -92,12 +92,21 @@ const GamingDevices = () => {
   return (
     <section className="py-16 bg-black/95">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-12 bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
-          Gaming Devices
-        </h2>
+        <div className="flex justify-between items-center mb-12">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            Gaming Devices
+          </h2>
+          <Button 
+            variant="outline" 
+            className="bg-white/10 backdrop-blur-sm text-white hover:bg-white/20"
+            onClick={() => navigate('/products')}
+          >
+            View All Devices
+          </Button>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {devices.map((device) => (
+          {devices.slice(0, 3).map((device) => (
             <div
               key={device.id}
               className="bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 border border-primary/20"
