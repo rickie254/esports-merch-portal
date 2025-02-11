@@ -1,10 +1,81 @@
 
 import Hero from "@/components/Hero";
 import { NavigationButtons } from "@/components/NavigationButtons";
-import GamingDevices from "@/components/GamingDevices";
 import ProductGrid from "@/components/ProductGrid";
 
 const browsergamingProducts = [
+  {
+    id: 1,
+    name: "RedMagic 6",
+    price: 37000,
+    category: "Gaming Phones",
+    image: "https://res.cloudinary.com/djeyyn3yi/image/upload/v1739290713/redmagic_6_pwhgo0.jpg",
+    description: "Storage: 12GB + 256GB and 16GB + 512GB | Performance: Smooth 90fps, can be modded to 144fps"
+  },
+  {
+    id: 2,
+    name: "RedMagic 7",
+    price: 46000,
+    category: "Gaming Phones",
+    image: "https://res.cloudinary.com/djeyyn3yi/image/upload/v1739290713/redmagic_6_pwhgo0.jpg",
+    description: "Storage: 12GB + 256GB and 16GB + 512GB | Performance: Smooth 90fps, can be modded to 144fps"
+  },
+  {
+    id: 3,
+    name: "RedMagic 7S Pro",
+    price: 53000,
+    category: "Gaming Phones",
+    image: "https://res.cloudinary.com/djeyyn3yi/image/upload/v1739290713/redmagic_6_pwhgo0.jpg",
+    description: "Storage: 12GB + 256GB and 16GB + 512GB | Performance: Smooth 90fps, can be modded to 144fps"
+  },
+  {
+    id: 4,
+    name: "RedMagic 8 Pro",
+    price: 65000,
+    category: "Gaming Phones",
+    image: "https://res.cloudinary.com/djeyyn3yi/image/upload/v1739290713/redmagic_6_pwhgo0.jpg",
+    description: "Storage: 12GB + 256GB and 16GB + 512GB | Performance: Smooth 90fps, can be modded to 144fps"
+  },
+  {
+    id: 5,
+    name: "RedMagic 8S Pro",
+    price: 69000,
+    category: "Gaming Phones",
+    image: "https://res.cloudinary.com/djeyyn3yi/image/upload/v1739290713/redmagic_6_pwhgo0.jpg",
+    description: "Storage: 12GB + 256GB and 16GB + 512GB | Performance: Smooth 90fps, can be modded to 144fps"
+  },
+  {
+    id: 6,
+    name: "RedMagic 8S Pro+",
+    price: 73000,
+    category: "Gaming Phones",
+    image: "https://res.cloudinary.com/djeyyn3yi/image/upload/v1739290713/redmagic_6_pwhgo0.jpg",
+    description: "Storage: 12GB + 256GB and 16GB + 512GB | Performance: Smooth 90fps, can be modded to 144fps"
+  },
+  {
+    id: 7,
+    name: "RedMagic 9 Pro",
+    price: 82000,
+    category: "Gaming Phones",
+    image: "https://res.cloudinary.com/djeyyn3yi/image/upload/v1739290713/redmagic_6_pwhgo0.jpg",
+    description: "Storage: 12GB + 256GB and 16GB + 512GB | Performance: Smooth 90fps, can be modded to 144fps"
+  },
+  {
+    id: 8,
+    name: "RedMagic 9 Pro+",
+    price: 87000,
+    category: "Gaming Phones",
+    image: "https://res.cloudinary.com/djeyyn3yi/image/upload/v1739290713/redmagic_6_pwhgo0.jpg",
+    description: "Storage: 12GB + 256GB and 16GB + 512GB | Performance: Smooth 90fps, can be modded to 144fps"
+  },
+  {
+    id: 9,
+    name: "RedMagic 9S Pro",
+    price: 86000,
+    category: "Gaming Phones",
+    image: "https://res.cloudinary.com/djeyyn3yi/image/upload/v1739290713/redmagic_6_pwhgo0.jpg",
+    description: "Storage: 12GB + 256GB and 16GB + 512GB | Performance: Smooth 90fps, can be modded to 144fps"
+  },
   {
     id: 101,
     name: "Gaming Mouse Pad",
@@ -12,8 +83,7 @@ const browsergamingProducts = [
     category: "Browser Gaming",
     image: "https://res.cloudinary.com/djeyyn3yi/image/upload/v1739290713/redmagic_6_pwhgo0.jpg",
     description: "High-quality gaming mouse pad for precise control"
-  },
-  // ... Add more browser gaming products here
+  }
 ];
 
 const Index = () => {
@@ -31,9 +101,6 @@ const Index = () => {
           <ProductGrid products={browsergamingProducts} />
         </div>
       </section>
-      
-      {/* Gaming Phones Section */}
-      <GamingDevices />
     </div>
   );
 };
