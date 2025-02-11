@@ -1,3 +1,4 @@
+
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
 
@@ -11,9 +12,9 @@ export function NavigationButtons() {
         <div className="flex flex-wrap gap-4">
           <button 
             className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded hover:bg-white/20 transition-colors"
-            onClick={() => navigate('/products')}
+            onClick={() => navigate('/browser-gaming')}
           >
-            Products
+            Browser Gaming
           </button>
           <button 
             className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded hover:bg-white/20 transition-colors"
